@@ -7,14 +7,14 @@ import entities.CubeStock;
 public class App {
     public static void main(String[] args) throws Exception {
         Scanner in = new Scanner(System.in);
-
+        
         CubeStock cS = new CubeStock();
 
         int opcao, checkCubes;
 
         String result;
 
-        cS.cubeTypes();
+        cS.cubesNxNTypes();
 
         do {
 
@@ -24,7 +24,7 @@ public class App {
             switch (opcao) {
 
                 case 1:
-                    System.out.print("Tell the cube you want to check: ");
+                    System.out.print("Tell the order of cube you want to check: ");
                     checkCubes = in.nextInt();
                     while (checkCubes < 6 && checkCubes > 10) {
                         System.out.print("Invalid option, type again: ");

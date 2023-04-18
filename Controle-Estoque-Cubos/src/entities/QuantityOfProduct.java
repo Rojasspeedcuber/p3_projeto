@@ -5,7 +5,7 @@ public class QuantityOfProduct {
     private int quantity;
 
     public QuantityOfProduct (){
-        this.quantity = 100;
+        this.quantity = 0;
     }
 
     public void addQuantity (int add){
@@ -13,6 +13,7 @@ public class QuantityOfProduct {
     }
 
     public void removeQuantity (int remove){
+        
         this.quantity -= remove;
     }
 

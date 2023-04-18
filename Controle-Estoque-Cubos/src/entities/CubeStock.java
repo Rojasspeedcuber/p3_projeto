@@ -1,7 +1,13 @@
 package entities;
 
+import java.util.ArrayList;
+
 public class CubeStock extends QuantityOfProduct {
-    public void cubeTypes() {
+
+    private ArrayList<String> productName = new ArrayList<>();
+    private ArrayList<Double> productPrice = new ArrayList<>();
+
+    public void cubesNxNTypes() {
 
         System.out.println("PROJECT: Magic Cube Stock \n\nCube Types in stock:");
         
@@ -48,9 +54,11 @@ public class CubeStock extends QuantityOfProduct {
 
 
     public void stockOptions() {
-        System.out.println("[1] - Check quantity of cube in stock");
-        System.out.println("[2] - Add a cube to the stock");
-        System.out.println("[3] - Remove a cube from stock");
+        System.out.println("[1] - Check quantity of cubes in stock");
+        System.out.println("[2] - Add a quantity of cubes to the stock");
+        System.out.println("[3] - Remove a quantity of cubes from stock");
+        System.out.println("[4] - Update a price");
+        System.out.println("[4] - Display list of products with prices");
         System.out.print("[0] - End program \n\nInform the desired option: ");
     }
 }
