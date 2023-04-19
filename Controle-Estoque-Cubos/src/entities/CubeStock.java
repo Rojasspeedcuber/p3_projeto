@@ -1,23 +1,24 @@
 package entities;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class CubeStock extends QuantityOfProduct {
 
     private ArrayList<String> productName = new ArrayList<>();
     private ArrayList<Double> productPrice = new ArrayList<>();
+    private String product;
+    private double price;
 
     public void cubesNxNTypes() {
 
-        System.out.println("PROJECT: Magic Cube Stock \n\nCube Types in stock:");
+        System.out.println("PROJECT: Rubiks Cube/Puzzles Stock \n\nCube Types in stock:");
         
-        for (int i = 0; i <= 4; i++) {
-            System.out.println("- Magic cube : " + (i + 6) + "x" + (i + 6));
+        for (int i = 0; i < 12 ; i++) {
+            System.out.println("- Rubiks cube : " + (i + 1) + "x" + (i + 1));
         }
 
     }
-
-
 
     public String checkQuantity (int cubes){
 
@@ -51,7 +52,17 @@ public class CubeStock extends QuantityOfProduct {
         return "anything";
     }
 
+    public void addProduct(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the new one you want to add to the list: ");
+        product = in.nextLine();
+        System.out.println("Enter the price of this product: ");
+        price = in.nextDouble();
+        productName.add(product);
+        productPrice.add(price);
 
+        in.close();
+    }
 
     public void stockOptions() {
         System.out.println("[1] - Check quantity of cubes in stock");
@@ -59,6 +70,7 @@ public class CubeStock extends QuantityOfProduct {
         System.out.println("[3] - Remove a quantity of cubes from stock");
         System.out.println("[4] - Update a price");
         System.out.println("[4] - Display list of products with prices");
+        System.out.println("[5] - Add a cube to the list of products");
         System.out.print("[0] - End program \n\nInform the desired option: ");
     }
 }
