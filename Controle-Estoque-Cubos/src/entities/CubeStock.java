@@ -29,28 +29,10 @@ public class CubeStock extends QuantityOfProduct {
         } else if (cubes == 3){
             return "The quantity of cube of type 3x3 is = " + q.newQuantity() + " Cubes";
         } else if (cubes == 4){
-            return "The quantity of cube of type 4x4 is =" + q.newQuantity() + " Cubes";
-        } else if (cubes == 5){
-            return "The quantity of cube of type 5x5 is = " + q.newQuantity() + " Cubes";
-        } else if (cubes == 6){
-            return "The quantity of cube of type 6x6 is = " + q.newQuantity() + " Cubes";
-        } else if (cubes == 7){
-            return "The quantity of cube of type 7x7 is = " + q.newQuantity() + " Cubes";
-        } else if (cubes == 8){
-            return "The quantity of cube of type 8x8 is = " + q.newQuantity() + " Cubes";
-        } else if (cubes == 9){
-            return "The quantity of cube of type 9x9 is = " + q.newQuantity() + " Cubes";
-        } else if (cubes == 10){
-            return "The quantity of cube of type 10x10 is = " + q.newQuantity() + " Cubes";
-        } else if (cubes == 11){
-            return "The quantity of cube of type 11x11 is = " + q.newQuantity() + " Cubes";
-        } else if (cubes == 12){
-            return "The quantity of cube of type 12x12 is = " + q.newQuantity() + " Cubes";
-        } else if (cubes == 13){
-            return "The quantity of cube of type 13x13 is = " + q.newQuantity() + " Cubes";
-        }
+            return "The quantity of cube of type 4x4 is = " + q.newQuantity() + " Cubes";
+        }   
         return "anything";
-    }
+    } 
 
     public void addProduct(){
         Scanner in = new Scanner(System.in);
