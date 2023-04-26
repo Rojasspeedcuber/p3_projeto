@@ -1,67 +1,84 @@
 package application;
 
+import java.util.Locale;
 import java.util.Scanner;
 
-import entities.CubeStock;
+import entities.Product;
 
 public class Main {
     public static void main(String[] args) throws Exception {
         Scanner in = new Scanner(System.in);
 
-        CubeStock cS = new CubeStock();
+        Locale.setDefault(Locale.US);
+        Product product = new Product();
 
-        int opcao, quantity, type;
+        int opcao, quantity;
 
-        String result;
+        String[] typeOfCubes = new String[1];
 
         do {
 
-            cS.stockOptions();
+            product.stockOptions();
             opcao = in.nextInt();
 
             switch (opcao) {
 
                 case 1:
-                    System.out.print("Tell the order of cube you want to check: ");
-                    type = in.nextInt();
+                    System.out.print("Enter the type of cube you want to check: ");
+                    product.type = in.next();
 
-                    while (type < 2 && type > 4) {
-                        System.out.print("Invalid option, type again: ");
-                        type = in.nextInt();
+                    while (!product.type.equals("nxnxn") && !product.type.equals("otherpuzzels")) {
+                        System.out.print("Product not found in stock, type again: ");
+                        product.type = in.next();
                     }
 
-                    result = cS.checkQuantity(type);
-
-                    if (result.equals("anything")) {
-                        System.out.println("No cubes available in stock.");
+                    if (product.type.equals("nxnxn")) {
+                        System.out.println("Product data: " + product);
                     } else {
-                        System.out.println(result);
+                        System.out.println("Product data: " + product);
                     }
+
                     break;
 
                 case 2:
-                    System.out.print("Enter the type of cube you want to add to the stock: ");
-                    type = in.nextInt();
+                    System.out.print("Enter the TYPE of cube you want to ADD to the stock: ");
+                    product.type = in.next();
 
-                    while (type < 2 || type > 4) {
-                        System.out.print("Invalid option, type again: ");
-                        type = in.nextInt();
+                    while (!product.type.equals("nxnxn") && !product.type.equals("otherpuzzels")) {
+                        System.out.print("Product not found in stock, type again: ");
+                        product.type = in.next();
                     }
 
-                    System.out.print("Inform the quantity of cube you want to add to the stock: ");
-                    quantity = in.nextInt();
-
-                    while (quantity < 0) {
-                        System.out.print("Invalid option, type again: ");
+                    if (product.type.equals("nxnxn")) {
+                        System.out.print("Enter the QUANTITY of product to be ADD in stock: ");
                         quantity = in.nextInt();
+                        product.addProducts(product.type, quantity);
                     }
-
-                    cS.addQuantity(quantity);
-                    System.out.println("Cube successfully added!");
 
                     break;
 
                 case 3:
+                    System.out.print("Enter the TYPE of cube you want to REMOVED to the stock: ");
+                    product.type = in.next();
+
+                    while (!product.type.equals("nxnxn") && !product.type.equals("otherpuzzels")) {
+                        System.out.print("Product not found in stock, type again: ");
+                        product.type = in.next();
+                    }
+
+                    System.out.print("Enter the QUANTITY of product to be REMOVED in stock: ");
+                    quantity = in.nextInt();
+                    product.RemoveProducts(product.type, quantity);
+
+                    break;
+
+                case 4:
+                    break;
+
+                case 5:
+                    break;
+
+                case 6:
                     break;
 
                 default:
