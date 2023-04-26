@@ -14,8 +14,6 @@ public class Main {
 
         int opcao, quantity;
 
-        String[] typeOfCubes = new String[1];
-
         do {
 
             product.stockOptions();
@@ -33,9 +31,9 @@ public class Main {
                     }
 
                     if (product.type.equals("nxnxn")) {
-                        System.out.println("Product data: " + product);
+                        System.out.println("Product data: " + product.nxnxnQuantity());
                     } else {
-                        System.out.println("Product data: " + product);
+                        System.out.println("Product data: " + product.otherPuzzelsQuantity());
                     }
 
                     break;
@@ -53,6 +51,7 @@ public class Main {
                         System.out.print("Enter the QUANTITY of product to be ADD in stock: ");
                         quantity = in.nextInt();
                         product.addProducts(product.type, quantity);
+                        System.out.println("product added successfully!");
                     }
 
                     break;
@@ -69,6 +68,7 @@ public class Main {
                     System.out.print("Enter the QUANTITY of product to be REMOVED in stock: ");
                     quantity = in.nextInt();
                     product.RemoveProducts(product.type, quantity);
+                    System.out.println("product removed successfully!");
 
                     break;
 
