@@ -3,7 +3,7 @@ package entities;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CubeStock {
+public abstract class CubeStock {
 
    /*  private ArrayList<String> productName = new ArrayList<>();
     private ArrayList<Double> productPrice = new ArrayList<>();
