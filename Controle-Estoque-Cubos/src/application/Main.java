@@ -12,7 +12,7 @@ public class Main {
         Locale.setDefault(Locale.US);
         Product product = new Product();
 
-        int opcao, quantity;
+        int opcao, quantity, typesOfNxnxn;
 
         do {
 
@@ -22,6 +22,9 @@ public class Main {
             switch (opcao) {
 
                 case 1:
+
+                    product.cubesInStock();
+
                     System.out.print("Enter the type of cube you want to check: ");
                     product.type = in.next();
 
@@ -31,7 +34,22 @@ public class Main {
                     }
 
                     if (product.type.equals("nxnxn")) {
-                        System.out.println("Product data: " + product.nxnxnQuantity());
+                        System.out.print("Enter the type of nxnxn cube you want to check:");
+                        typesOfNxnxn = in.nextInt();
+
+                        while (typesOfNxnxn != 2 && typesOfNxnxn != 3 && typesOfNxnxn != 4) {
+                            System.out.print("Invalid cube type (nxnxn), retype:");
+                            typesOfNxnxn = in.nextInt();
+                        }
+
+                        if (typesOfNxnxn == 2) {
+                            product.nxnxnQuantity2x2();
+                        } else if (typesOfNxnxn == 3) {
+                            product.nxnxnQuantity3x3();
+                        } else {
+                            product.nxnxnQuantity4x4();
+                        }
+                        
                     } else {
                         System.out.println("Product data: " + product.otherPuzzelsQuantity());
                     }

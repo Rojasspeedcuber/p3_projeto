@@ -1,6 +1,6 @@
 package entities;
 
-public class Pessoa {
+public class Pessoa  extends CubeStock{
     private String name;
     private String cpf;
     private int number;

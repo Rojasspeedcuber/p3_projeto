@@ -1,8 +1,4 @@
 package entities;
-
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public abstract class CubeStock {
 
    /*  private ArrayList<String> productName = new ArrayList<>();
@@ -50,6 +46,10 @@ public abstract class CubeStock {
 
         in.close();
     } */
+
+    public void cubesInStock (){
+        System.out.println("CUBES IN STOCK = Nxnxn and OtherPuzzels");
+    }
 
     public void stockOptions() {
         System.out.println("[1] - Check quantity of cubes in stock");
