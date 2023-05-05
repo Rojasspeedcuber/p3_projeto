@@ -6,7 +6,7 @@ public class Product extends CubeStock {
 
     public String type;
     public double price;
-    private nxnxn[] nxnxn; //[0] - 2x2 [1] - 3x3 [2] - 3x3
+    private nxnxn[] nxnxn; // [0] - 2x2 [1] - 3x3 [2] - 4x4
     private otherPuzzels otherPuzzels;
 
     public Product() {
@@ -17,6 +17,8 @@ public class Product extends CubeStock {
             nxnxn[i] = new nxnxn();
         }
     }
+
+    // VALOR TOTAL DE CADA TIPO DO CUBO (NXNXN)
 
     public double totalValueInNxnxn2x2() {
         return nxnxn[0].getQuantity() * price;
@@ -30,21 +32,34 @@ public class Product extends CubeStock {
         return nxnxn[2].getQuantity() * price;
     }
 
+    // VALOR TOTAL DO CUBO (OTHERPUZZELS)
+
     public double totalValueInOtherPuzzels() {
         return otherPuzzels.getQuantity() * price;
     }
 
-    public void addProducts(String type, int quantity) {
+    // ADICIONAR A QUANTIDADE DE CADA TIPO DO CUBO (NXNXN)
 
-        if (type.equals("2x2")) {
-            nxnxn[0].Add(quantity);
-        } else if (type.equals("3x3")) {
-            nxnxn[1].Add(quantity);
-        } else if (type.equals("4x4")) {
-            nxnxn[2].Add(quantity);
-        } else if (type.equals("otherpuzzels")) {
-            otherPuzzels.Add(quantity);
-        }
+    public int addProductsInNxnxn2x2(int quantity) {
+        nxnxn[0].Add(quantity);
+        return nxnxn[0].getQuantity();
+    }
+
+    public int addProductsInNxnxn3x3(int quantity) {
+        nxnxn[1].Add(quantity);
+        return nxnxn[1].getQuantity();
+    }
+
+    public int addProductsInNxnxn4x4(int quantity) {
+        nxnxn[2].Add(quantity);
+        return nxnxn[2].getQuantity();
+    }
+
+    // ADICIONAR A QUANTIDADE DO CUBO (OTHERPUZZELS)
+
+    public int addProductsInOtherPuzzels(int quantity) {
+        otherPuzzels.Add(quantity);
+        return otherPuzzels.getQuantity();
     }
 
     public void RemoveProducts(String type, int quantity) {
@@ -62,7 +77,7 @@ public class Product extends CubeStock {
 
     public String nxnxnQuantity2x2() {
         return type
-                + ", $"
+                + "(2x2), $"
                 + String.format("%.2f", price)
                 + ", "
                 + nxnxn[0].getQuantity() + " units, Total: $"
@@ -71,7 +86,7 @@ public class Product extends CubeStock {
 
     public String nxnxnQuantity3x3() {
         return type
-                + ", $"
+                + "(3x3), $"
                 + String.format("%.2f", price)
                 + ", "
                 + nxnxn[1].getQuantity() + " units, Total: $"
@@ -80,7 +95,7 @@ public class Product extends CubeStock {
 
     public String nxnxnQuantity4x4() {
         return type
-                + ", $"
+                + "(4x4), $"
                 + String.format("%.2f", price)
                 + ", "
                 + nxnxn[2].getQuantity() + " units, Total: $"

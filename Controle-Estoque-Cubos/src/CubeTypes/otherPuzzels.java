@@ -1,8 +1,6 @@
 package CubeTypes;
 
-import entities.CubeStock;
-
-public class otherPuzzels extends CubeStock {
+public class otherPuzzels {
 
     private int quantity;
 
