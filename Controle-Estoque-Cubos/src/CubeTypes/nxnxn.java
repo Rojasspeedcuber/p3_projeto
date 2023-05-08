@@ -3,25 +3,35 @@ package CubeTypes;
 public class nxnxn {
 
     private int quantity;
-    
-    public nxnxn (){
+    private double price;
+
+    public nxnxn() {
         super();
         quantity = 0;
+        price = 0;
     }
 
-    public void Add (int quantity){
+    public void Add(int quantity) {
         this.quantity += quantity;
     }
 
-    public void Remove (int quantity){
-        if (this.quantity - quantity < 0){
+    public void Remove(int quantity) {
+        if (this.quantity - quantity < 0) {
             System.out.println("número maior que o estoque");
         } else {
             this.quantity -= quantity;
         }
     }
 
-    public int getQuantity (){
+    public int getQuantity() {
         return quantity;
+    }
+
+    public double addPrice (double price){
+        return this.price = price;
+    }
+
+    public double getPrice (){
+        return price;
     }
 }

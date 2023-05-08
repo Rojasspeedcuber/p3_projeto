@@ -3,10 +3,12 @@ package CubeTypes;
 public class otherPuzzels {
 
     private int quantity;
+    private double price;
 
     public otherPuzzels() {
         super();
         quantity = 0;
+        price = 0;
     }
 
     public void Add(int quantity) {
@@ -24,4 +26,13 @@ public class otherPuzzels {
     public int getQuantity() {
         return quantity;
     }
+
+    public double addPrice (double price){
+        return this.price = price;
+    }
+
+    public double getPrice (){
+        return price;
+    }
+
 }
