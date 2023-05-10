@@ -170,7 +170,7 @@ public class Main {
 
                     product.cubesInStock();
 
-                    System.out.println("inform the TYPE of cube you want to UPDATE the price: ");
+                    System.out.print("inform the TYPE of cube you want to UPDATE the price: ");
                     product.type = in.next();
 
                     while (!product.type.equals("nxnxn") && !product.type.equals("otherpuzzels")) {

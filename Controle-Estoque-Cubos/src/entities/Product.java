@@ -109,28 +109,6 @@ public class Product extends CubeStock {
 
     // --------------------------------------------------------------------------------------//
 
-    // PREÇO DE CADA CUBO (NXNXN)
-
-    public double priceNxnxn2x2() {
-        return nxnxn[0].addPrice(20.0);
-    }
-
-    public double priceNxnxn3x3() {
-        return nxnxn[1].addPrice(30.0);
-    }
-
-    public double priceNxnxn4x4() {
-        return nxnxn[2].addPrice(40.0);
-    }
-
-    // PREÇO DO CUBO (OTHERPUZZELS)
-
-    public double priceOtherPuzzels() {
-        return otherPuzzels.addPrice(50.0);
-    }
-
-    // --------------------------------------------------------------------------------------//
-
     // ATUALIZAR O PREÇO DE CADA TIPO DE CUBO (NXNXN)
 
     public double upDatePriceNxnxn2x2(double price) {
