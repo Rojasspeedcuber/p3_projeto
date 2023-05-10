@@ -21,22 +21,24 @@ public class Product extends CubeStock {
     // VALOR TOTAL DE CADA TIPO DO CUBO (NXNXN)
 
     public double totalValueInNxnxn2x2() {
-        return nxnxn[0].getQuantity() * priceNxnxn2x2();
+        return nxnxn[0].getQuantity() * nxnxn[0].getPrice();
     }
 
     public double totalValueInNxnxn3x3() {
-        return nxnxn[1].getQuantity() * priceNxnxn3x3();
+        return nxnxn[1].getQuantity() * nxnxn[1].getPrice();
     }
 
-    public double totalValueInNxnxn24x4() {
-        return nxnxn[2].getQuantity() * priceNxnxn4x4();
+    public double totalValueInNxnxn4x4() {
+        return nxnxn[2].getQuantity() * nxnxn[2].getPrice();
     }
 
     // VALOR TOTAL DO CUBO (OTHERPUZZELS)
 
     public double totalValueInOtherPuzzels() {
-        return otherPuzzels.getQuantity() * priceOtherPuzzels();
+        return otherPuzzels.getQuantity() * otherPuzzels.getPrice();
     }
+
+    // --------------------------------------------------------------------------------------//
 
     // ADICIONAR A QUANTIDADE DE CADA TIPO DO CUBO (NXNXN)
 
@@ -55,7 +57,59 @@ public class Product extends CubeStock {
         return nxnxn[2].getQuantity();
     }
 
-    // ADICIONAR PREÇO DE CADA CUBO (NXNXN)
+    // ADICIONAR A QUANTIDADE DO CUBO (OTHERPUZZELS)
+
+    public int addProductsInOtherPuzzels(int quantity) {
+        otherPuzzels.Add(quantity);
+        return otherPuzzels.getQuantity();
+    }
+
+    // --------------------------------------------------------------------------------------//
+
+    // REMOVER A QUANTIDADE DE CADA TIPO DO CUBO (NXNXN)
+
+    public int removeProductsNxnxn2x2(int quantity) {
+        if (nxnxn[0].Remove(quantity) == -1) {
+            return -1;
+        } else {
+            nxnxn[0].Remove(quantity);
+            return nxnxn[0].getQuantity();
+        }
+    }
+
+    public int removeProductsNxnxn3x3(int quantity) {
+        if (nxnxn[1].Remove(quantity) == -1) {
+            return -1;
+        } else {
+            nxnxn[1].Remove(quantity);
+            return nxnxn[1].getQuantity();
+        }
+    }
+
+    public int removeProductsNxnxn4x4(int quantity) {
+        if (nxnxn[2].Remove(quantity) == -1) {
+            return -1;
+        } else {
+            nxnxn[2].Remove(quantity);
+            return nxnxn[2].getQuantity();
+        }
+    }
+
+    // REMOVER A QUANTIDADE DO CUBO (OTHERPUZZELS)
+
+    public int removeOtherPuzzels(int quantity) {
+
+        if (otherPuzzels.Remove(quantity) == -1) {
+            return -1;
+        } else {
+            otherPuzzels.Remove(quantity);
+            return otherPuzzels.getQuantity();
+        }
+    }
+
+    // --------------------------------------------------------------------------------------//
+
+    // PREÇO DE CADA CUBO (NXNXN)
 
     public double priceNxnxn2x2() {
         return nxnxn[0].addPrice(20.0);
@@ -68,6 +122,14 @@ public class Product extends CubeStock {
     public double priceNxnxn4x4() {
         return nxnxn[2].addPrice(40.0);
     }
+
+    // PREÇO DO CUBO (OTHERPUZZELS)
+
+    public double priceOtherPuzzels() {
+        return otherPuzzels.addPrice(50.0);
+    }
+
+    // --------------------------------------------------------------------------------------//
 
     // ATUALIZAR O PREÇO DE CADA TIPO DE CUBO (NXNXN)
 
@@ -86,36 +148,21 @@ public class Product extends CubeStock {
         return nxnxn[2].getPrice();
     }
 
-    // ADICIONAR O PREÇO DO CUBO (OTHERPUZZELS)
+    // ATUALIZAR O PREÇO DE CADA DO CUBO CUBO (OTHERPUZZELS)
 
-    public double priceOtherPuzzels() {
+    public double upDatePriceOtherPuzzels(double price) {
+        otherPuzzels.addPrice(price);
         return otherPuzzels.getPrice();
     }
 
-    // ADICIONAR A QUANTIDADE DO CUBO (OTHERPUZZELS)
+    // --------------------------------------------------------------------------------------//
 
-    public int addProductsInOtherPuzzels(int quantity) {
-        otherPuzzels.Add(quantity);
-        return otherPuzzels.getQuantity();
-    }
-
-    public void RemoveProducts(String type, int quantity) {
-
-        if (type.equals("2x")) {
-            nxnxn[0].Remove(quantity);
-        } else if (type.equals("3x")) {
-            nxnxn[1].Remove(quantity);
-        } else if (type.equals("4x")) {
-            nxnxn[2].Remove(quantity);
-        } else if (type.equals("otherpuzzels")) {
-            otherPuzzels.Remove(quantity);
-        }
-    }
+    // METODOS toString (NXNXN) && (OTHERPUZZELS)
 
     public String nxnxnQuantity2x2() {
         return type
                 + "(2x2), $"
-                + String.format("%.2f", priceNxnxn2x2())
+                + String.format("%.2f", nxnxn[0].getPrice())
                 + ", "
                 + nxnxn[0].getQuantity() + " units, Total: $"
                 + String.format("%.2f", totalValueInNxnxn2x2());
@@ -124,7 +171,7 @@ public class Product extends CubeStock {
     public String nxnxnQuantity3x3() {
         return type
                 + "(3x3), $"
-                + String.format("%.2f", priceNxnxn3x3())
+                + String.format("%.2f", nxnxn[1].getPrice())
                 + ", "
                 + nxnxn[1].getQuantity() + " units, Total: $"
                 + String.format("%.2f", totalValueInNxnxn3x3());
@@ -133,16 +180,16 @@ public class Product extends CubeStock {
     public String nxnxnQuantity4x4() {
         return type
                 + "(4x4), $"
-                + String.format("%.2f", priceNxnxn4x4())
+                + String.format("%.2f", nxnxn[2].getPrice())
                 + ", "
                 + nxnxn[2].getQuantity() + " units, Total: $"
-                + String.format("%.2f", totalValueInNxnxn24x4());
+                + String.format("%.2f", totalValueInNxnxn4x4());
     }
 
     public String otherPuzzelsQuantity() {
         return type
                 + ", $"
-                + String.format("%.2f", 50.0)
+                + String.format("%.2f", otherPuzzels.getPrice())
                 + ", "
                 + otherPuzzels.getQuantity() + " units, Total: $"
                 + String.format("%.2f", totalValueInOtherPuzzels());

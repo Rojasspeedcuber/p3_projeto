@@ -15,11 +15,11 @@ public class otherPuzzels {
         this.quantity += quantity;
     }
 
-    public void Remove(int quantity) {
+    public int Remove(int quantity) {
         if (this.quantity - quantity < 0) {
-            System.out.println("número maior que o estoque");
+            return -1;
         } else {
-            this.quantity -= quantity;
+            return this.quantity -= quantity;
         }
     }
 

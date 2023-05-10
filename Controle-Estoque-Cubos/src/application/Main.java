@@ -13,6 +13,7 @@ public class Main {
         Product product = new Product();
 
         int opcao, quantity, typesOfNxnxn;
+        double price;
 
         do {
 
@@ -25,7 +26,7 @@ public class Main {
 
                     product.cubesInStock();
 
-                    System.out.print("Enter the type of cube you want to check: ");
+                    System.out.print("Inform the type of cube you want to check: ");
                     product.type = in.next();
 
                     while (!product.type.equals("nxnxn") && !product.type.equals("otherpuzzels")) {
@@ -34,7 +35,7 @@ public class Main {
                     }
 
                     if (product.type.equals("nxnxn")) {
-                        System.out.print("Enter the type of nxnxn cube you want to check:");
+                        System.out.print("Inform the type of nxnxn cube you want to check:");
                         typesOfNxnxn = in.nextInt();
 
                         while (typesOfNxnxn != 2 && typesOfNxnxn != 3 && typesOfNxnxn != 4) {
@@ -60,7 +61,7 @@ public class Main {
 
                     product.cubesInStock();
 
-                    System.out.print("Enter the TYPE of cube you want to ADD to the stock: ");
+                    System.out.print("Inform the TYPE of cube you want to ADD to the stock: ");
                     product.type = in.next();
 
                     while (!product.type.equals("nxnxn") && !product.type.equals("otherpuzzels")) {
@@ -69,7 +70,7 @@ public class Main {
                     }
 
                     if (product.type.equals("nxnxn")) {
-                        System.out.print("Enter the type of nxnxn cube you want to ADD in stock:");
+                        System.out.print("Inform the type of nxnxn cube you want to ADD in stock:");
                         typesOfNxnxn = in.nextInt();
 
                         while (typesOfNxnxn != 2 && typesOfNxnxn != 3 && typesOfNxnxn != 4) {
@@ -77,7 +78,7 @@ public class Main {
                             typesOfNxnxn = in.nextInt();
                         }
 
-                        System.out.print("Enter the QUANTITY of product to be ADD in stock: ");
+                        System.out.print("Inform the QUANTITY of product to be ADD in stock: ");
                         quantity = in.nextInt();
 
                         if (typesOfNxnxn == 2) {
@@ -93,7 +94,7 @@ public class Main {
 
                     } else {
 
-                        System.out.print("Enter the QUANTITY of product to be ADD in stock: ");
+                        System.out.print("Inform the QUANTITY of product to be ADD in stock: ");
                         quantity = in.nextInt();
 
                         product.addProductsInOtherPuzzels(quantity);
@@ -104,7 +105,9 @@ public class Main {
                     break;
 
                 case 3:
-                    System.out.print("Enter the TYPE of cube you want to REMOVED to the stock: ");
+                    product.cubesInStock();
+
+                    System.out.print("Enter the TYPE of cube you want to REMOVE from stock: ");
                     product.type = in.next();
 
                     while (!product.type.equals("nxnxn") && !product.type.equals("otherpuzzels")) {
@@ -112,14 +115,101 @@ public class Main {
                         product.type = in.next();
                     }
 
-                    System.out.print("Enter the QUANTITY of product to be REMOVED in stock: ");
-                    quantity = in.nextInt();
-                    product.RemoveProducts(product.type, quantity);
-                    System.out.println("product removed successfully!");
+                    if (product.type.equals("nxnxn")) {
+                        System.out.print("Inform the type of nxnxn cube you want to REMOVED from stock:");
+                        typesOfNxnxn = in.nextInt();
+
+                        while (typesOfNxnxn != 2 && typesOfNxnxn != 3 && typesOfNxnxn != 4) {
+                            System.out.print("Invalid cube type (nxnxn), retype:");
+                            typesOfNxnxn = in.nextInt();
+                        }
+
+                        System.out.print("Inform the QUANTITY of the product to be REMOVED from stock:");
+                        quantity = in.nextInt();
+
+                        if (typesOfNxnxn == 2) {
+                            if (product.removeProductsNxnxn2x2(quantity) == -1) {
+                                System.out.println("Number greater than stock.");
+                            } else {
+                                product.removeProductsNxnxn2x2(quantity);
+                                System.out.println("Cube(s) removed successfully!");
+                            }
+                        } else if (typesOfNxnxn == 3) {
+                            if (product.removeProductsNxnxn3x3(quantity) == -1) {
+                                System.out.println("Number greater than stock.");
+                            } else {
+                                product.removeProductsNxnxn3x3(quantity);
+                                System.out.println("Cube(s) removed successfully!");
+                            }
+                        } else {
+                            if (product.removeProductsNxnxn4x4(quantity) == -1) {
+                                System.out.println("Number greater than stock.");
+                            } else {
+                                product.removeProductsNxnxn4x4(quantity);
+                                System.out.println("Cube(s) removed successfully!");
+                            }
+                        }
+
+                    } else {
+
+                        System.out.print("Inform the QUANTITY of product to be REMOVED from stock: ");
+                        quantity = in.nextInt();
+
+                        if (product.removeOtherPuzzels(quantity) == -1) {
+                            System.out.println("Number greater than stock.");
+                        } else {
+                            product.removeOtherPuzzels(quantity);
+                            System.out.println("Cube(s) removed successfully!");
+                        }
+
+                    }
 
                     break;
 
                 case 4:
+
+                    product.cubesInStock();
+
+                    System.out.println("inform the TYPE of cube you want to UPDATE the price: ");
+                    product.type = in.next();
+
+                    while (!product.type.equals("nxnxn") && !product.type.equals("otherpuzzels")) {
+                        System.out.print("Product not found in stock, type again: ");
+                        product.type = in.next();
+                    }
+
+                    if (product.type.equals("nxnxn")) {
+                        System.out.print("Inform the type of nxnxn cube you want to UPDATE the price: ");
+                        typesOfNxnxn = in.nextInt();
+
+                        while (typesOfNxnxn != 2 && typesOfNxnxn != 3 && typesOfNxnxn != 4) {
+                            System.out.print("Invalid cube type (nxnxn), retype:");
+                            typesOfNxnxn = in.nextInt();
+                        }
+
+                        System.out.print("Inform the PRICE of the product to be UPDATED: ");
+                        price = in.nextDouble();
+
+                        if (typesOfNxnxn == 2) {
+                            product.upDatePriceNxnxn2x2(price);
+                            System.out.println("Price successfully added!");
+                        } else if (typesOfNxnxn == 3) {
+                            product.upDatePriceNxnxn3x3(price);
+                            System.out.println("Price successfully added!");
+                        } else {
+                            product.upDatePriceNxnxn4x4(price);
+                            System.out.println("Price successfully added!");
+                        }
+
+                    } else {
+
+                        System.out.print("Inform the PRICE of the product to be UPDATED: ");
+                        price = in.nextDouble();
+
+                        product.upDatePriceOtherPuzzels(price);
+                        System.out.println("Price successfully added!");
+
+                    }
                     break;
 
                 case 5:
