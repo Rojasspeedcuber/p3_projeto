@@ -3,6 +3,7 @@ package application;
 import java.util.Locale;
 import java.util.Scanner;
 
+import entities.CubeRental;
 import entities.Product;
 
 public class Main {
@@ -216,6 +217,7 @@ public class Main {
                     break;
 
                 case 6:
+                    System.out.println("O produto está disponível para aluguel?" + product.disponibilidade());
                     break;
 
                 default:

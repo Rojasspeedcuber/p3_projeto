@@ -2,7 +2,7 @@ package entities;
 
 import CubeTypes.*;
 
-public class Product extends CubeStock {
+public class Product extends CubeRental {
 
     public String type;
     public double price;
